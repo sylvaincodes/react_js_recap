@@ -1,0 +1,12 @@
+
+
+%textbox{
+    outline: none;
+    &:focus, &:hover{
+        outline: none;
+    }
+}
+
+input[type="text"]{
+    @extend %textbox;
+}

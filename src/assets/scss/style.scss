@@ -1,0 +1,11 @@
+/***************
+ * MAIN STYLES *
+ ***************/
+
+// import bootstrap here
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss'; 
+
+//import custom components
+@import './components/variables.scss';
+@import './components/reset.scss';
+@import './components/custom.scss';
