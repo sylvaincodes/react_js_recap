@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
-    // Configure routing
+    // Configure routing with react - router - router
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
