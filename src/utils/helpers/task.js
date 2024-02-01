@@ -15,10 +15,13 @@ export const updateTodoStatus = (todos, task) => {
 };
 
 export const filterTodos = (params, todos) => {
+  if (params === "all") {
+    return todos.filter((single) => single);
+  }
   if (params === "done") {
     return todos.filter((single) => single.done === true);
   }
-  if (params === "nodone") {
-    return todos.filter((single) => single.done !== true);
+  if (params === "todo") {
+    return todos.filter((single) => single.done === false);
   }
 };

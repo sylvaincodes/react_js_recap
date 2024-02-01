@@ -11,6 +11,7 @@ const Todos = [
 ];
 const Todo = () => {
   const [todos, setTodos] = useState(Todos);
+  const [filter, setFilter] = useState([]);
 
   useMemo(() => {
     const sortedTodos = todos.sort((a, b) => b - a);
@@ -28,23 +29,45 @@ const Todo = () => {
             >
               <TodoDesc url="./icons/notebook.png" content="Enjoy Todo Tools" />
 
-              {/* <FilterTodos todos={todos} setTodos={setTodos} /> */}
-              <TodoForm todos={todos} setTodos={setTodos} />
+              <TodoForm
+                todos={todos}
+                setTodos={setTodos}
+                setFilter={setFilter}
+              />
+              <FilterTodos
+                todos={todos}
+                setTodos={setTodos}
+                setFilter={setFilter}
+              />
 
               <div className="to-do-list d-flex flex-column gap-3 my-5 w-100">
-                {todos &&
-                  todos
-                    .map((single, idx) => {
-                      return (
-                        <TodoSingle
-                          todos={todos}
-                          setTodos={setTodos}
-                          single={single}
-                          key={idx}
-                        />
-                      );
-                    })
-                    .sort((a, b) => b.id - a.id)}
+                {filter.length === 0
+                  ? todos &&
+                    todos
+                      .map((single, idx) => {
+                        return (
+                          <TodoSingle
+                            todos={todos}
+                            setTodos={setTodos}
+                            single={single}
+                            key={idx}
+                          />
+                        );
+                      })
+                      .sort((a, b) => b.id - a.id)
+                  : filter &&
+                    filter
+                      .map((single, idx) => {
+                        return (
+                          <TodoSingle
+                            todos={todos}
+                            setTodos={setTodos}
+                            single={single}
+                            key={idx}
+                          />
+                        );
+                      })
+                      .sort((a, b) => b.id - a.id)}
               </div>
             </div>
           </div>

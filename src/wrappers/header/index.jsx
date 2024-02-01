@@ -1,10 +1,7 @@
-
 const index = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};
 
-index.propTypes = {}
+index.propTypes = {};
 
-export default index
+export default index;
