@@ -1,0 +1,31 @@
+name: Builder et Déployer notre App sur Github Pages
+permissions:
+  contents: write
+on: 
+  push:
+    branches:
+       - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: le code
+          uses: actions/checkout@v4
+        - name: Install node v20
+          uses: actions/setup-node@v4
+          with:
+             node-version: 20
+        - name: Install dependances
+          run: npm ci
+        - name: Build
+          run: npm run build   
+        - name: Deploy
+          uses: JamesIves/github-pages-deploy-action@4.1.1
+          with:
+            folder: build
+            branch: gh-pages
+          env:
+            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+          
+
