@@ -26,9 +26,9 @@ const Todo = () => {
               className="todo-wrapper d-flex flex-column 
                 align-items-center justify-content-center"
             >
-              <TodoDesc url="./icons/notebook.png" content="" />
+              <TodoDesc url="./icons/notebook.png" content="Enjoy Todo Tools" />
 
-              <FilterTodos todos={todos} setTodos={setTodos} />
+              {/* <FilterTodos todos={todos} setTodos={setTodos} /> */}
               <TodoForm todos={todos} setTodos={setTodos} />
 
               <div className="to-do-list d-flex flex-column gap-3 my-5 w-100">

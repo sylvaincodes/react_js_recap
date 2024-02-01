@@ -2,7 +2,7 @@ import { filterTodos } from "../../utils/helpers/task";
 import PropTypes from "prop-types";
 
 const FilterTodos = ({ todos, setTodos }) => {
-  const handleFilter = (params) => {
+  const handleFilter = (params, todos) => {
     let newTodos = filterTodos(params, todos);
     setTodos(newTodos);
   };
@@ -16,7 +16,7 @@ const FilterTodos = ({ todos, setTodos }) => {
               <span>Filtrer :</span>
               <button
                 className="btn btn-outline-light rounded-pill"
-                onClick={handleFilter("done")}
+                onClick={() => handleFilter("done", todos)}
               >
                 <img
                   src="./icons/check-list.png"
@@ -27,7 +27,10 @@ const FilterTodos = ({ todos, setTodos }) => {
                 />
               </button>
 
-              <button className="btn btn-outline-light rounded-pill">
+              <button
+                className="btn btn-outline-light rounded-pill"
+                onClick={() => handleFilter("all", todos)}
+              >
                 <img
                   src="./icons/to-do-list.png"
                   alt="todoimage"
