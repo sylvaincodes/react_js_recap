@@ -15,9 +15,9 @@ jobs:
           uses: actions/setup-node@v4
           with:
              node-version: 20
-        - name: Install dependances
+        - name: Install les dependances
           run: npm ci
-        - name: Build
+        - name: Build l'application
           run: npm run build   
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@4.1.1
