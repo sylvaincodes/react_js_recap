@@ -27,7 +27,7 @@ const TodoSingle = ({ todos, setTodos, single }) => {
           name="task"
           id={`task-${single.id}`}
           className="form-check-input rounded-pill p-3 border"
-          onClick={() => handleTodo(todos, single)}
+          onChange={() => handleTodo(todos, single)}
           checked={single.done ? true : false}
         />
         <span

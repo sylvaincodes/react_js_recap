@@ -3,20 +3,17 @@ import TodoDesc from "../../components/todo/TodoDesc";
 import TodoForm from "../../components/todo/TodoForm";
 import TodoSingle from "../../components/todo/TodoSingle";
 import FilterTodos from "./FilterTodos";
+import { useSelector } from "react-redux";
 
-const Todos = [
-  { id: 1, content: "this is a task 1", done: true },
-  { id: 2, content: "this is a task 2", done: false },
-  { id: 3, content: "this is a task 3", done: false },
-];
 const Todo = () => {
-  const [todos, setTodos] = useState(Todos);
+  const { tasks } = useSelector((state) => state.task);
+
+  const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState([]);
 
   useMemo(() => {
-    const sortedTodos = todos.sort((a, b) => b - a);
-    setTodos(sortedTodos);
-  }, [todos]);
+    setTodos(tasks);
+  }, [tasks]);
 
   return (
     <div className="todo-area">
@@ -29,11 +26,7 @@ const Todo = () => {
             >
               <TodoDesc url="./icons/notebook.png" content="Enjoy Todo Tools" />
 
-              <TodoForm
-                todos={todos}
-                setTodos={setTodos}
-                setFilter={setFilter}
-              />
+              <TodoForm todos={todos} setFilter={setFilter} />
               <FilterTodos
                 todos={todos}
                 setTodos={setTodos}
