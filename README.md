@@ -16,6 +16,6 @@ Plusieurs concepts de base ont été abordés dans ce cour notamement
 - La gestion d'un état local
 - La gestion de l'état global de l'application
 - L'écriture de test unitaire avec jest 
-- L'écriture de test d'intégration avec cipress
-- La consommation d'api Firebase
-- L'intégration continue et le déploiement continue avec github actions
+- L'écriture de test d'intégration avec cypress
+- La consommation d'api GraphQl
+- L'intégration continue et le déploiement continue
