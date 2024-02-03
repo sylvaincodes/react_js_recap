@@ -19,3 +19,6 @@ Plusieurs concepts de base ont été abordés dans ce cour notamement
 - L'écriture de test d'intégration avec cypress
 - La consommation d'api GraphQl
 - L'intégration continue et le déploiement continue
+- L'écriture de test d'intégration avec cypress
+- La consommation d'api REST
+- L'intégration continue et le déploiement continue avec github actions et Vercel
