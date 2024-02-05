@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "env-cmd -f ./src/.env.dev vite",
-    "build": "env-cmd -f ./src/.env vite build",
+    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
