@@ -1,8 +1,10 @@
 # React le récap en 2024
 
-Ce court tutoriel est un templein pour un développeur Réact débutant.
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
-Plusieurs concepts de base ont été abordés dans ce cour notamement
+Cette tutoriel est un tremplein pour un développeur Réact débutant.
+
+Plusieurs concepts de base ont été abordés notamement
 -------------------------------------------------------------------
 
 - Découverte de la bibliothèque Réact 
@@ -13,9 +15,9 @@ Plusieurs concepts de base ont été abordés dans ce cour notamement
 - La création de composant réutilisable 
 - La mise à jour d'un composant grâce aux props et le state local
 - La communication entre les composants en utilisatant les props
-- La gestion d'un état local
-- La gestion de l'état global de l'application
+- La gestion d'un état local avec les hooks
+- La gestion de l'état global de l'application avec redux
 - L'écriture de test unitaire avec jest 
-- L'écriture de test d'intégration avec cipress
-- La consommation d'api Firebase
-- L'intégration continue et le déploiement continue avec github actions
+- L'écriture de test d'intégration avec cypress
+- La consommation d'api avec axios
+- L'intégration continue et le déploiement continue 
