@@ -1,13 +1,9 @@
-// import { createAsyncThunk } from "@reduxjs/toolkit";
-// const API_URL = "https://graphql-api-todos-app.onrender.com/graphql";
 import axios from "axios";
-
-const API_URL = "http://localhost:4000/graphql/";
 
 export const fetchTasks = (setTodos) => {
   axios
     .post(
-      API_URL,
+      import.meta.env.VITE_API_URL,
       {
         query: `query {
         allTasks {
@@ -32,7 +28,7 @@ export const fetchTasks = (setTodos) => {
 export const addTask = (values) => {
   axios
     .post(
-      API_URL,
+      import.meta.env.VITE_API_URL,
       {
         query: `mutation {
               addTask(content: "${values.task}") {
@@ -57,7 +53,7 @@ export const updateTask = async (single) => {
   console.log(single);
   await axios
     .post(
-      API_URL,
+      import.meta.env.VITE_API_URL,
       {
         query: `mutation {
           updateTask(id:"${single.id}", content: "${
