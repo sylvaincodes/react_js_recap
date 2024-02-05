@@ -1,6 +1,6 @@
 # React le récap en 2024
 
-![alt text](https://github.com/sylvaincodes/react_js_recap/blob/chapitre_1/public/icons/react.png)
+![Screenshot](https://github.com/sylvaincodes/react_js_recap/blob/chapitre_1/public/icons/react.png)
 
 Cette tutoriel est un tremplein pour un développeur Réact débutant.
 
