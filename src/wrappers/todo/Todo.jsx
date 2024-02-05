@@ -1,19 +1,17 @@
-import { useMemo, useState } from "react";
+import { useState, useMemo } from "react";
 import TodoDesc from "../../components/todo/TodoDesc";
 import TodoForm from "../../components/todo/TodoForm";
 import TodoSingle from "../../components/todo/TodoSingle";
 import FilterTodos from "./FilterTodos";
-import { useSelector } from "react-redux";
+import { fetchTasks } from "../../utils/services/apiRequest";
 
 const Todo = () => {
-  const { tasks } = useSelector((state) => state.task);
-
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState();
   const [filter, setFilter] = useState([]);
 
   useMemo(() => {
-    setTodos(tasks);
-  }, [tasks]);
+    fetchTasks(setTodos);
+  }, []);
 
   return (
     <div className="todo-area">
@@ -22,11 +20,15 @@ const Todo = () => {
           <div className="col-12 col-sm-10 col-md-8 col-lg-8 col-xl-6">
             <div
               className="todo-wrapper d-flex flex-column 
-                align-items-center justify-content-center"
+      align-items-center justify-content-center"
             >
               <TodoDesc url="./icons/notebook.png" content="Enjoy Todo Tools" />
 
-              <TodoForm todos={todos} setFilter={setFilter} />
+              <TodoForm
+                todos={todos}
+                setTodos={setTodos}
+                setFilter={setFilter}
+              />
               <FilterTodos
                 todos={todos}
                 setTodos={setTodos}
@@ -37,12 +39,12 @@ const Todo = () => {
                 {filter.length === 0
                   ? todos &&
                     todos
-                      .map((single, idx) => {
+                      .map((item, idx) => {
                         return (
                           <TodoSingle
                             todos={todos}
                             setTodos={setTodos}
-                            single={single}
+                            single={item}
                             key={idx}
                           />
                         );

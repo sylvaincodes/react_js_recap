@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import { updateTodoStatus } from "../../utils/helpers/task";
 import toast from "react-hot-toast";
 import "animate.css";
+import { updateTask } from "../../utils/services/apiRequest";
 
 const TodoSingle = ({ todos, setTodos, single }) => {
-  const handleTodo = (todos, single) => {
+  const handleTodo = async (todos, single) => {
+    updateTask(single);
     let newTodos = updateTodoStatus(todos, single);
     setTodos(newTodos);
     toast.success("Tâche mise à jour!");
@@ -27,8 +29,8 @@ const TodoSingle = ({ todos, setTodos, single }) => {
           name="task"
           id={`task-${single.id}`}
           className="form-check-input rounded-pill p-3 border"
-          onChange={() => handleTodo(todos, single)}
           checked={single.done ? true : false}
+          onChange={() => handleTodo(todos, single)}
         />
         <span
           className={`text-black fw-light fs-4 ${
@@ -43,7 +45,7 @@ const TodoSingle = ({ todos, setTodos, single }) => {
 };
 
 TodoSingle.propTypes = {
-  single: PropTypes.object,
+  single: PropTypes.any,
   todos: PropTypes.array,
   setTodos: PropTypes.func,
 };

@@ -1,44 +1,79 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-const API_URL = "https://graphql-api-todos-app.onrender.com/graphql";
-// const API_URL = "http://localhost:4000/graphql";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// const API_URL = "https://graphql-api-todos-app.onrender.com/graphql";
+import axios from "axios";
 
-export const getTasks = createAsyncThunk("getTasks", async () => {
-  const res = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: `{
-       allTasks {
-         _id
-         content
-         done
-       }
-     }`,
-    }),
-  });
-  const data = await res.json();
-  return data.data.allTasks;
-});
+const API_URL = "http://localhost:4000/graphql/";
 
-export const setTask = (content) =>
-  createAsyncThunk("addTask", async () => {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+export const fetchTasks = (setTodos) => {
+  axios
+    .post(
+      API_URL,
+      {
+        query: `query {
+        allTasks {
+        _id
+        id
+        content
+        done
+      }
+    }`,
       },
-      body: JSON.stringify({
-        query: `mutation {
-        addTask(content: "${content}") {
-          _id
-          content
-          done
-        }
-     }`,
-      }),
+      {
+        headers: {
+          // Authorization: "bearer our-bearer-token",
+        },
+      }
+    )
+    .then((response) => {
+      setTodos(response.data.data.allTasks);
     });
-    const data = await res.json();
-    return data.data.addTask;
-  });
+};
+
+export const addTask = (values) => {
+  axios
+    .post(
+      API_URL,
+      {
+        query: `mutation {
+              addTask(content: "${values.task}") {
+                _id
+                content
+                done
+              }
+           }`,
+      },
+      {
+        headers: {
+          // Authorization: "bearer our-bearer-token",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response.data);
+    });
+};
+
+export const updateTask = async (single) => {
+  console.log(single);
+  await axios
+    .post(
+      API_URL,
+      {
+        query: `mutation {
+          updateTask(id:"${single.id}", content: "${
+          single.content
+        }",done: ${!single.done}) {
+            _id
+            content
+            done
+          }
+        }`,
+      },
+      {
+        headers: {
+          // Authorization: "bearer our-bearer-token",
+        },
+      }
+    )
+    .then(() => {});
+};

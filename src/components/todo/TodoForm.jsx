@@ -3,12 +3,10 @@ import { useFormik } from "formik";
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import * as yup from "yup";
-import { useDispatch } from "react-redux";
-import { addTask } from "../../redux-toolkit/slices/taskSlice";
+import { addTask } from "../../utils/services/apiRequest";
 
-const TodoForm = ({ todos, setFilter }) => {
-  const dispatch = useDispatch();
-  // use formik
+const TodoForm = ({ todos, setTodos, setFilter }) => {
+  
   const formik = useFormik({
     initialValues: {
       task: "ajouter une tâche",
@@ -26,18 +24,17 @@ const TodoForm = ({ todos, setFilter }) => {
 
       setFilter("");
 
-      // let newArray = [
-      //   {
-      //     id: todos.length + 1,
-      //     content: values.task,
-      //     done: false,
-      //   },
-      //   ...todos,
-      // ];
+      let newArray = [
+        {
+          id: todos.length + 1,
+          content: values.task,
+          done: false,
+        },
+        ...todos,
+      ];
 
-      // await setTodos(newArray);
-
-      dispatch(addTask(values.task));
+      addTask(values);
+      await setTodos(newArray);
       toast.success(
         todos.length > 4
           ? "C'est déja beaucoup non 🥵"

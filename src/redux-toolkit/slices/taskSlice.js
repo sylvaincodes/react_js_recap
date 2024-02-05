@@ -11,19 +11,20 @@ export const taskSlice = createSlice({
   },
 
   reducers: {
-    fetchTasks: () => {},
+    fetchTasks: (state) => {
+      getTasks(state);
+    },
     fetchTask: () => {},
-    addTask: (action) => {
-      console.log(action);
+    addTask: (state, action) => {
       setTask(action.payload);
     },
     updateTask: () => {},
   },
-  extraReducers: (builder) => {
-    builder.addCase(getTasks.fulfilled, (state, action) => {
-      state.tasks = action.payload;
-    });
-  },
+  // extraReducers: (builder) => {
+  //   builder.addCase(getTasks.fulfilled, (state, action) => {
+  //     state.tasks = action.payload;
+  //   });
+  // },
 });
 
 export const { fetchTasks, fetchTask, addTask, updateTask } = taskSlice.actions;

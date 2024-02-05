@@ -9,18 +9,12 @@ const index = () => {
               className="d-flex flex-column align-items-center 
             justify-content-center flex-wrap gap-1"
             >
-              <h4 className="text-capitalize fw-lighter">
-                Simple projet Réact Js Fait par
-              </h4>
               <Link
                 className="text-primary fw-bold"
                 to="https://sylvaincodes.web.app/"
               >
                 Sylvaincodes
               </Link>
-              <span className="text-secondary">
-                Projet Disponible sur GitHub Pour une utilisation éducative
-              </span>
             </div>
           </div>
         </div>
